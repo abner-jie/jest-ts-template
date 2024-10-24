@@ -1,0 +1,11 @@
+/node_modules/
+/build/
+/lib/
+/docs/
+.idea/*
+*.local
+
+.DS_Store
+coverage
+*.log
+/examples/
