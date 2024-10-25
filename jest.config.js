@@ -10,7 +10,7 @@ module.exports = {
   moduleNameMapper: {
     ...pathsToModuleNameMapper(
       { "@/*": ["./src/*"] },
-      { prefix: "<rootDir>/" }
+      { prefix: "<rootDir>/" },
     ),
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },

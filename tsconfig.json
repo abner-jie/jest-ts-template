@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
     "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
@@ -18,7 +19,7 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "outDir": "./dist/tsc/",
+    "outDir": "./dist/tsc",
     "types": [
       "node",
       "jest"

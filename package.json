@@ -1,7 +1,7 @@
 {
-  "name": "test",
+  "name": "web3-sdk",
   "version": "0.0.1",
-  "description": "",
+  "description": "Web3 multi chain SDK",
   "repository": "",
   "license": "",
   "keywords": [],
@@ -15,7 +15,7 @@
     "test": "jest",
     "clean": "rm -rf dist build package",
     "ts-node": "ts-node",
-    "build": "tsc -p tsconfig.json",
+    "build": "pnpm test && tsc -p tsconfig.json",
     "build-all": "yarn clean && yarn build"
   },
   "devDependencies": {
@@ -34,8 +34,13 @@
   },
   "dependencies": {
     "@jest/globals": "^29.7.0",
+    "@mysten/bcs": "^1.1.0",
+    "@mysten/sui": "^1.13.0",
+    "@noble/curves": "^1.6.0",
+    "@scure/bip39": "^1.4.0",
     "dotenv": "^16.4.5",
     "ethers": "^6.13.4",
-    "tslib": "^2.8.0"
+    "tslib": "^2.8.0",
+    "tweetnacl": "^1.0.3"
   }
 }
