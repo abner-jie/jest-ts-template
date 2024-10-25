@@ -1,11 +1,11 @@
-import nacl from "tweetnacl";
-import { derivePath } from "./es25519-hd-key";
-import { isValidHardenedPath, mnemonicToSeedHex } from "./utils";
+import nacl from 'tweetnacl'
+import { derivePath } from './es25519-hd-key'
+import { isValidHardenedPath, mnemonicToSeedHex } from './utils'
 
-export const PRIVATE_KEY_SIZE = 32;
-export const LEGACY_PRIVATE_KEY_SIZE = 64;
-export const SUI_PRIVATE_KEY_PREFIX = "suiprivkey";
-export const DEFAULT_ED25519_DERIVATION_PATH_SUI = "m/44'/784'/0'/0'/0'";
+export const PRIVATE_KEY_SIZE = 32
+export const LEGACY_PRIVATE_KEY_SIZE = 64
+export const SUI_PRIVATE_KEY_PREFIX = 'suiprivkey'
+export const DEFAULT_ED25519_DERIVATION_PATH_SUI = 'm/44\'/784\'/0\'/0\'/0\''
 
 /**
  * Ed25519 Keypair data. The publickey is the 32-byte public key and
@@ -18,7 +18,7 @@ export interface Ed25519KeypairData {
 }
 
 export class Ed25519Keypair {
-  private keypair: Ed25519KeypairData;
+  private keypair: Ed25519KeypairData
 
   /**
    * Create a new Ed25519 keypair instance.
@@ -29,13 +29,13 @@ export class Ed25519Keypair {
   constructor(keypair?: Ed25519KeypairData) {
     // super();
     if (keypair) {
-      this.keypair = keypair;
+      this.keypair = keypair
     } else {
-      this.keypair = nacl.sign.keyPair();
+      this.keypair = nacl.sign.keyPair()
     }
   }
   getSecretKey(): Uint8Array {
-    return this.keypair.secretKey.slice(0, PRIVATE_KEY_SIZE);
+    return this.keypair.secretKey.slice(0, PRIVATE_KEY_SIZE)
   }
 
   /**
@@ -63,32 +63,32 @@ export class Ed25519Keypair {
     //   return this.fromSecretKey(decoded.secretKey, options);
     // }
 
-    const secretKeyLength = secretKey.length;
+    const secretKeyLength = secretKey.length
     if (secretKeyLength !== PRIVATE_KEY_SIZE) {
       throw new Error(
         `Wrong secretKey size. Expected ${PRIVATE_KEY_SIZE} bytes, got ${secretKeyLength}.`,
-      );
+      )
     }
-    const keypair = nacl.sign.keyPair.fromSeed(secretKey);
+    const keypair = nacl.sign.keyPair.fromSeed(secretKey)
     if (!options || !options.skipValidation) {
-      const encoder = new TextEncoder();
-      const signData = encoder.encode("sui validation");
-      const signature = nacl.sign.detached(signData, keypair.secretKey);
+      const encoder = new TextEncoder()
+      const signData = encoder.encode('sui validation')
+      const signature = nacl.sign.detached(signData, keypair.secretKey)
       if (!nacl.sign.detached.verify(signData, signature, keypair.publicKey)) {
-        throw new Error("provided secretKey is invalid");
+        throw new Error('provided secretKey is invalid')
       }
     }
-    return new Ed25519Keypair(keypair);
+    return new Ed25519Keypair(keypair)
   }
   static deriveKeypair(mnemonics: string, path?: string): Ed25519Keypair {
     if (path == null) {
-      path = DEFAULT_ED25519_DERIVATION_PATH_SUI;
+      path = DEFAULT_ED25519_DERIVATION_PATH_SUI
     }
     if (!isValidHardenedPath(path)) {
-      throw new Error("Invalid derivation path");
+      throw new Error('Invalid derivation path')
     }
-    const { key } = derivePath(path, mnemonicToSeedHex(mnemonics));
+    const { key } = derivePath(path, mnemonicToSeedHex(mnemonics))
 
-    return Ed25519Keypair.fromSecretKey(key);
+    return Ed25519Keypair.fromSecretKey(key)
   }
 }

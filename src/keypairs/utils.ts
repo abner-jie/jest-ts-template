@@ -1,13 +1,13 @@
-import { mnemonicToSeedSync as bip39MnemonicToSeedSync } from "@scure/bip39";
-import { toHex } from "@mysten/bcs";
+import { mnemonicToSeedSync as bip39MnemonicToSeedSync } from '@scure/bip39'
+import { toHex } from '@mysten/bcs'
 
 export function isValidHardenedPath(path: string): boolean {
   if (
-    !new RegExp("^m\\/44'\\/784'\\/[0-9]+'\\/[0-9]+'\\/[0-9]+'+$").test(path)
+    !new RegExp('^m\\/44\'\\/784\'\\/[0-9]+\'\\/[0-9]+\'\\/[0-9]+\'+$').test(path)
   ) {
-    return false;
+    return false
   }
-  return true;
+  return true
 }
 
 /**
@@ -16,7 +16,7 @@ export function isValidHardenedPath(path: string): boolean {
  * @param mnemonics 12 words string split by spaces.
  */
 export function mnemonicToSeedHex(mnemonics: string): string {
-  return toHex(mnemonicToSeed(mnemonics));
+  return toHex(mnemonicToSeed(mnemonics))
 }
 
 /**
@@ -25,5 +25,5 @@ export function mnemonicToSeedHex(mnemonics: string): string {
  * @param mnemonics 12 words string split by spaces.
  */
 export function mnemonicToSeed(mnemonics: string): Uint8Array {
-  return bip39MnemonicToSeedSync(mnemonics, "");
+  return bip39MnemonicToSeedSync(mnemonics, '')
 }

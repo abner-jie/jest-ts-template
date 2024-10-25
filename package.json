@@ -12,6 +12,7 @@
   "types": "./dist/tsc/index.d.ts",
   "scripts": {
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint src/ --ext .js,.jsx,.ts,.tsx --fix",
     "test": "jest",
     "clean": "rm -rf dist build package",
     "ts-node": "ts-node",
@@ -22,7 +23,7 @@
     "@types/jest": "^29.2.4",
     "@types/node": "^18.11.10",
     "@types/ws": "^8.5.12",
-    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/eslint-plugin": "^8.11.0",
     "@typescript-eslint/parser": "^5.45.0",
     "esbuild": "^0.15.18",
     "eslint": "^8.29.0",
