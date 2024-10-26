@@ -1,6 +1,6 @@
-import { fromHex } from '@mysten/bcs'
 import { hmac } from '@noble/hashes/hmac'
 import { sha512 } from '@noble/hashes/sha512'
+import { fromHex } from '../utils'
 
 type Hex = string
 type Path = string

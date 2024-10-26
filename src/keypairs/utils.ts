@@ -1,5 +1,5 @@
 import { mnemonicToSeedSync as bip39MnemonicToSeedSync } from '@scure/bip39'
-import { toHex } from '@mysten/bcs'
+import { toHex } from '../utils'
 
 export function isValidHardenedPath(path: string): boolean {
   if (
