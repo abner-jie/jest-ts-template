@@ -1,0 +1,18 @@
+{
+  // 使用项目的 Prettier 配置
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  // 在保存时自动修复 ESLint 问题
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  // 设置 ESLint 使用本地安装的配置和规则
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  // 忽略 ESLint 和 Prettier 的冲突警告
+  "prettier.requireConfig": true,
+  "eslint.alwaysShowStatus": true
+}

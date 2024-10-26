@@ -5,7 +5,8 @@ import { isValidHardenedPath, mnemonicToSeedHex } from './utils'
 export const PRIVATE_KEY_SIZE = 32
 export const LEGACY_PRIVATE_KEY_SIZE = 64
 export const SUI_PRIVATE_KEY_PREFIX = 'suiprivkey'
-export const DEFAULT_ED25519_DERIVATION_PATH_SUI = 'm/44\'/784\'/0\'/0\'/0\''
+// eslint-disable-next-line quotes
+export const DEFAULT_ED25519_DERIVATION_PATH_SUI = "m/44'/784'/0'/0'/0'"
 
 /**
  * Ed25519 Keypair data. The publickey is the 32-byte public key and
@@ -13,8 +14,8 @@ export const DEFAULT_ED25519_DERIVATION_PATH_SUI = 'm/44\'/784\'/0\'/0\'/0\''
  * key and the last 32 bytes is the public key.
  */
 export interface Ed25519KeypairData {
-  publicKey: Uint8Array;
-  secretKey: Uint8Array;
+  publicKey: Uint8Array
+  secretKey: Uint8Array
 }
 
 export class Ed25519Keypair {
@@ -51,7 +52,7 @@ export class Ed25519Keypair {
   static fromSecretKey(
     // secretKey: Uint8Array | string,
     secretKey: Uint8Array,
-    options?: { skipValidation?: boolean },
+    options?: { skipValidation?: boolean }
   ): Ed25519Keypair {
     // if (typeof secretKey === "string") {
     //   const decoded = decodeSuiPrivateKey(secretKey);
@@ -66,7 +67,7 @@ export class Ed25519Keypair {
     const secretKeyLength = secretKey.length
     if (secretKeyLength !== PRIVATE_KEY_SIZE) {
       throw new Error(
-        `Wrong secretKey size. Expected ${PRIVATE_KEY_SIZE} bytes, got ${secretKeyLength}.`,
+        `Wrong secretKey size. Expected ${PRIVATE_KEY_SIZE} bytes, got ${secretKeyLength}.`
       )
     }
     const keypair = nacl.sign.keyPair.fromSeed(secretKey)

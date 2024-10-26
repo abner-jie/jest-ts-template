@@ -12,9 +12,11 @@ type Keys = {
 const ED25519_CURVE = 'ed25519 seed'
 const HARDENED_OFFSET = 0x80000000
 
-export const pathRegex = new RegExp('^m(\\/[0-9]+\')+$')
+// eslint-disable-next-line quotes
+export const pathRegex = new RegExp("^m(\\/[0-9]+')+$")
 
-export const replaceDerive = (val: string): string => val.replace('\'', '')
+// eslint-disable-next-line quotes
+export const replaceDerive = (val: string): string => val.replace("'", '')
 export const getMasterKeyFromSeed = (seed: Hex): Keys => {
   const h = hmac.create(sha512, ED25519_CURVE)
   const I = h.update(fromHex(seed)).digest()
@@ -35,7 +37,7 @@ const CKDPriv = ({ key, chainCode }: Keys, index: number): Keys => {
   data.set(key, 1)
   data.set(
     new Uint8Array(indexBuffer, 0, indexBuffer.byteLength),
-    key.length + 1,
+    key.length + 1
   )
 
   const I = hmac.create(sha512, chainCode).update(data).digest()
@@ -61,7 +63,7 @@ export const isValidPath = (path: string): boolean => {
 export const derivePath = (
   path: Path,
   seed: Hex,
-  offset = HARDENED_OFFSET,
+  offset = HARDENED_OFFSET
 ): Keys => {
   if (!isValidPath(path)) {
     throw new Error('Invalid derivation path')
@@ -79,6 +81,6 @@ export const derivePath = (
     {
       key,
       chainCode,
-    },
+    }
   )
 }

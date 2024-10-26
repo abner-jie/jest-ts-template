@@ -1,27 +1,27 @@
-const { pathsToModuleNameMapper } = require("ts-jest");
+const { pathsToModuleNameMapper } = require('ts-jest')
 
 // Assuming you have some TypeScript path aliases defined in your tsconfig.json
-const { compilerOptions } = require("./tsconfig");
+const { compilerOptions } = require('./tsconfig')
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
-  preset: "ts-jest",
-  testEnvironment: "node",
+  preset: 'ts-jest',
+  testEnvironment: 'node',
   // modulePathIgnorePatterns: ["<rootDir>/src/config.spec.ts"],
   moduleNameMapper: {
     ...pathsToModuleNameMapper(
-      { "@/*": ["./src/*"] },
-      { prefix: "<rootDir>/" },
+      { '@/*': ['./src/*'] },
+      { prefix: '<rootDir>/' }
     ),
-    "^(\\.{1,2}/.*)\\.js$": "$1",
+    '^(\\.{1,2}/.*)\\.js$': '$1',
   },
-  extensionsToTreatAsEsm: [".ts"],
+  extensionsToTreatAsEsm: ['.ts'],
   transform: {
-    "^.+\\.ts?$": [
-      "ts-jest",
+    '^.+\\.ts?$': [
+      'ts-jest',
       {
         useESM: true,
       },
     ],
   },
-  setupFilesAfterEnv: ["<rootDir>/tests/env.ts", "<rootDir>/tests/utils.ts"],
-};
+  setupFilesAfterEnv: ['<rootDir>/tests/env.ts', '<rootDir>/tests/utils.ts'],
+}

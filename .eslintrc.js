@@ -1,32 +1,22 @@
 module.exports = {
   root: true,
-  parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint"],
-  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  parser: '@typescript-eslint/parser',
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+  ],
+  plugins: ['@typescript-eslint'],
   env: {
     browser: true,
     node: true,
   },
   rules: {
-    semi: ["error", "never"],
-    quotes: ["error", "single"],
-    "eol-last": ["error", "always"],
-    "comma-dangle": ["error", "always-multiline"],
-    "@typescript-eslint/no-explicit-any": [0],
-    // "@typescript-eslint/semi": ["error", "never"],
-    // "@typescript-eslint/member-delimiter-style": [
-    //   "error",
-    //   {
-    //     multiline: {
-    //       delimiter: "none",
-    //       requireLast: true,
-    //     },
-    //     singleline: {
-    //       delimiter: "comma",
-    //       requireLast: false,
-    //     },
-    //     multilineDetection: "brackets",
-    //   },
-    // ],
+    'prettier/prettier': 'error',
+    semi: ['error', 'never'],
+    quotes: ['error', 'single'],
+    'eol-last': ['error', 'always'],
+    'comma-dangle': ['error', 'always-multiline'],
+    '@typescript-eslint/no-explicit-any': [0],
   },
-};
+}

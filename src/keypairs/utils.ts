@@ -3,7 +3,8 @@ import { toHex } from '@mysten/bcs'
 
 export function isValidHardenedPath(path: string): boolean {
   if (
-    !new RegExp('^m\\/44\'\\/784\'\\/[0-9]+\'\\/[0-9]+\'\\/[0-9]+\'+$').test(path)
+    // eslint-disable-next-line quotes
+    !new RegExp(`^m\\/44'\\/784'\\/[0-9]+'\\/[0-9]+'\\/[0-9]+'+$`).test(path)
   ) {
     return false
   }
