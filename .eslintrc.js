@@ -18,5 +18,6 @@ module.exports = {
     'eol-last': ['error', 'always'],
     'comma-dangle': ['error', 'always-multiline'],
     '@typescript-eslint/no-explicit-any': [0],
+    // 'no-unused-vars': 'error',
   },
 }

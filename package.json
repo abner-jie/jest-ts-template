@@ -15,10 +15,11 @@
     "lint:fix": "eslint src/ --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write .",
     "test": "jest",
+    "docs": "typedoc --entryPoints src/index.ts",
     "clean": "rm -rf dist build package",
     "ts-node": "ts-node",
     "build": "pnpm test && tsc -p tsconfig.json",
-    "build-all": "yarn clean && yarn build"
+    "build-all": "yarn clean && pnpm test && yarn build"
   },
   "devDependencies": {
     "@types/jest": "^29.2.4",
@@ -34,7 +35,7 @@
     "prettier": "^3.3.3",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
-    "typedoc": "^0.23.21",
+    "typedoc": "^0.23.28",
     "typescript": "^5.0.4"
   },
   "dependencies": {

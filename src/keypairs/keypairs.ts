@@ -4,7 +4,7 @@ import { isValidHardenedPath, mnemonicToSeedHex } from './utils'
 
 export const PRIVATE_KEY_SIZE = 32
 export const LEGACY_PRIVATE_KEY_SIZE = 64
-export const SUI_PRIVATE_KEY_PREFIX = 'suiprivkey'
+// const SUI_PRIVATE_KEY_PREFIX = 'suiprivkey'
 // eslint-disable-next-line quotes
 export const DEFAULT_ED25519_DERIVATION_PATH_SUI = "m/44'/784'/0'/0'/0'"
 
